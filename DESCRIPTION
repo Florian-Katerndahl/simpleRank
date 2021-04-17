@@ -1,5 +1,5 @@
 Package: simpleRank
-Title: Implementin Mann-Kendall Test and Theil-Sen Approach
+Title: Implementing Mann-Kendall Test and Theil-Sen Approach
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Florian",

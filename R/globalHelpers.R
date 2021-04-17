@@ -22,7 +22,7 @@ onesided_sgn <- function(t) {
 check_sequence <- function(t = NULL, n) {
 	if (!is.null(t)) {
 		if (length(t) != n) {
-			stop("Whiule t was supplied: objects t and Y are not of same length.")
+			stop("While t was supplied: objects t and Y are not of same length.")
 		}
 		return(t)
 	}

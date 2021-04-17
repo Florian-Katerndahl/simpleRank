@@ -1,18 +1,22 @@
 Package: simpleRank
-Title: What the Package Does (One Line, Title Case)
+Title: Implementin Mann-Kendall Test and Theil-Sen Approach
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Florian",
+           family = "Katerndahl",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+           email = "florian@katerndahl.com")
+Description: After implementing the Mann-Kendall Test as well as the Theil-Sen Approach as custom functions,
+	I thought of implementing them in a (very) small R-package. Is there an application for them? Probably not.
+	Do I hope to learn how to write R-packages? Yes.
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 URL: https://github.com/Florian-Katerndahl/simpleRank
 BugReports: https://github.com/Florian-Katerndahl/simpleRank/issues
+Imports: 
+    purrr,
+    stats,
+    utils

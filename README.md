@@ -17,7 +17,8 @@ prohibits one-sided tests for significance.
 
 This is a toy package which was mainly created to get used to writing
 packages for R. While it (at some point) will be feature-complete in the
-sense that it’s usable, I’m not sure if you’d really want wo use it.
+sense that it’s usable, I’m not sure if you’d really want to use it.
+Documentation is subpart.
 
 ## Installation
 

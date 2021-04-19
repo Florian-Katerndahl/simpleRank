@@ -1,6 +1,3 @@
-# TODO
-#
-
 #' Calculate sum of signs of two vectors
 #'
 #' @description

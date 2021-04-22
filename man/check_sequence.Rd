@@ -2,7 +2,7 @@
 % Please edit documentation in R/globalHelpers.R
 \name{check_sequence}
 \alias{check_sequence}
-\title{Title}
+\title{Sequence Checking}
 \usage{
 check_sequence(t = NULL, n)
 }
@@ -15,5 +15,5 @@ check_sequence(t = NULL, n)
 A numeric vector.
 }
 \description{
-Title
+Sequence Checking
 }

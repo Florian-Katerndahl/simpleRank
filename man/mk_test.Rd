@@ -12,13 +12,15 @@ mk_test(
 )
 }
 \arguments{
-\item{t}{}
+\item{t}{A vector of ranks (numeric, or coercible to numeric).
+For Time Series the observation dates.}
 
-\item{Y}{}
+\item{Y}{A vector of ranks. For Time Series the values observed at each
+\emph{t}.}
 
-\item{alpha_val}{}
+\item{alpha_val}{Level of significance used for testing.}
 
-\item{alternative}{}
+\item{alternative}{What should \mjseqn{H_{1}} be?}
 }
 \value{
 Built in tests like the \code{t.test} use a class "htest".
@@ -26,4 +28,8 @@ Hopefully this will be my return value/class as well.
 }
 \description{
 Mann-Kendall Test
+}
+\seealso{
+\code{\link{mk_score}} \code{\link{mk_variance}}
+\code{\link{mk_tau}}
 }

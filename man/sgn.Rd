@@ -18,6 +18,13 @@ An Integer.
 Takes two vectors as input and returns summed product of the form
 \eqn{\textrm{sign}(z_j - z_i) \* \textrm{sign}(t_j - t_i)}.
 }
+\details{
+\loadmathjax
+\mjsdeqn{\textrm{sgn}(x) =
+\begin{cases} 1, &\textrm{if}\; x > 0 \\ 0,
+&\textrm{if}\; x = 0 \\ -1,
+&\textrm{if}\; x < 0 \end{cases}}
+}
 \references{
 Kendall, M. G. (1975): Rank Correlation Methods. 4th Edition London,
 High Wycombe: Charles Griffin & Company Ltd.

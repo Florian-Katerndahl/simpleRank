@@ -7,20 +7,16 @@
 ts_score(t = NULL, Y, slope)
 }
 \arguments{
-\item{t}{}
+\item{t}{A vector of ranks (numeric, or coercible to numeric).
+For Time Series the observation dates.}
 
-\item{Y}{}
+\item{Y}{A vector of ranks (numeric, or coercible to numeric).
+For Time Series the observation dates.}
 
-\item{slope}{}
-}
-\value{
-
+\item{slope}{Slope of Rankings.}
 }
 \description{
 Calculate Test Statistic of Sen's Slope.
-}
-\details{
-This
 }
 \seealso{
 \code{\link{ts_test}}

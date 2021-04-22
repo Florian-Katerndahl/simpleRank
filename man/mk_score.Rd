@@ -7,13 +7,22 @@
 mk_score(t = NULL, Y)
 }
 \arguments{
-\item{t}{}
+\item{t}{A vector of ranks (numeric, or coercible to numeric).
+For Time Series the observation dates.}
 
-\item{Y}{}
+\item{Y}{A vector of ranks. For Time Series the values observed at each
+\emph{t}.}
 }
 \value{
 
 }
 \description{
 Calculate Mann-Kendall Score
+}
+\details{
+\loadmathjax
+\mjsdeqn{S = \sum_{i = 1}^{n - 1}\sum_{j = i + 1}^{n} \textrm{sgn}(X_{j} - X_{i})}
+}
+\seealso{
+\code{\link{mk_test}}
 }

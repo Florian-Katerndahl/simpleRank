@@ -7,11 +7,12 @@
 ts_tau(t = NULL, n, score)
 }
 \arguments{
-\item{t}{}
+\item{t}{A vector of ranks (numeric, or coercible to numeric).
+For Time Series the observation dates.}
 
-\item{n}{}
+\item{n}{Length of ranking.}
 
-\item{score}{}
+\item{score}{Sen's Test statistic.}
 }
 \value{
 

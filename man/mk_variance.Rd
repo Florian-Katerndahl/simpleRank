@@ -9,10 +9,10 @@ mk_variance(n, t = NULL, u = NULL)
 \arguments{
 \item{n}{Length of ranking/time series.}
 
-\item{t}{Contingency table of ranking \eqn{R_{t}}. If \code{NULL} (the default),
+\item{t}{Contingency table of ranking \mjseqn{R_{t}}. If \code{NULL} (the default),
 assumes that no duplications are present.}
 
-\item{u}{Contingency table of ranking \eqn{R_{u}}. If \code{NULL} (the default),
+\item{u}{Contingency table of ranking \mjseqn{R_{u}}. If \code{NULL} (the default),
 assumes that no duplications are present.}
 }
 \value{
@@ -28,4 +28,7 @@ u(u - 1)(2u + 5)) + \frac{1}{9n(n-1)(n-2)} \times
 \sum_{t \in g_t} t(t-1)(t-2) \times \sum_{u \in g_u} u(u-1)(u-2) +
 \frac{1}{2n(n-1)} \times \sum_{t \in g_t} t(t-1) \times
 \sum_{u \in g_u} u(u-1)}{18}}
+}
+\seealso{
+\code{\link{mk_test}}
 }

@@ -11,7 +11,6 @@
 #' @param Y A vector of ranks. For Time Series the values observed at each
 #'   \emph{t}.
 #'
-#' @return
 #' @export
 #'
 #' @details \loadmathjax Sen's slope is calculated as followed:
@@ -58,7 +57,6 @@ ts_slope <- function(t = NULL, Y) {
 #'   For Time Series the observation dates.
 #' @param slope Slope of Rankings.
 #'
-#' @return
 #' @export
 #'
 #' @seealso \code{\link{ts_test}}
@@ -83,7 +81,6 @@ ts_score <- function(t = NULL, Y, slope) {
 #' @param u Contingency table of ranks in one ranking.
 #'   Will be coerced to numeric vector.
 #'
-#' @return
 #' @export
 #'
 #' @details This is equivalent to the calculation of the
@@ -107,7 +104,6 @@ ts_variance <- function(n, u = rep(1, length.out = n)) {
 #' @param n Length of ranking.
 #' @param score Sen's Test statistic.
 #'
-#' @return
 #' @export
 #'
 #' @seealso \code{\link{ts_test}}

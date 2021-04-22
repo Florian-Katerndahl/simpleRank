@@ -13,14 +13,11 @@ For Time Series the observation dates.}
 \item{Y}{A vector of ranks. For Time Series the values observed at each
 \emph{t}.}
 }
-\value{
-
-}
 \description{
-\loadmathjax Calculation of Sen's slope. See Details.
+Calculation of Sen's slope. See Details.
 }
 \details{
-Sen's slope is calculated as followed:
+\loadmathjax Sen's slope is calculated as followed:
 \mjsdeqn{b = \frac{x_{n/2} + x_{n/2 + 1}}{2}}
 with \eqn{x} being the differences of every \mjseqn{\binom{n}{2}} value pairs:
 \mjsdeqn{x = (Y_{j} - Y_{i})/(t_{j} - t_{i}), 1 \le \, i < \, j \, \le n}

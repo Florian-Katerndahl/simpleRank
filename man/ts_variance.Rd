@@ -12,9 +12,6 @@ ts_variance(n, u = rep(1, length.out = n))
 \item{u}{Contingency table of ranks in one ranking.
 Will be coerced to numeric vector.}
 }
-\value{
-
-}
 \description{
 Calculates variance Sen's Test Statistic Z.
 }

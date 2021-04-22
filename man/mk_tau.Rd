@@ -11,10 +11,10 @@ mk_tau(score, n, t = NULL, u = NULL)
 
 \item{n}{Length of ranking/time series.}
 
-\item{t}{Contingency table of ranking \eqn{R_{t}}. If \code{NULL} (the default),
+\item{t}{Contingency table of ranking \mjseqn{R_{t}}. If \code{NULL} (the default),
 assumes that no duplications are present.}
 
-\item{u}{Contingency table of ranking \eqn{R_{u}}. If \code{NULL} (the default),
+\item{u}{Contingency table of ranking \mjseqn{R_{u}}. If \code{NULL} (the default),
 assumes that no duplications are present.}
 }
 \value{
@@ -22,4 +22,14 @@ A named vector (Tau a or Tau b, depending on the input).
 }
 \description{
 Calculate Kendall's Tau
+}
+\details{
+\loadmathjax
+\mjsdeqn{\tau_{a} = \frac{S}{\frac{1}{2}n(n-1)} = \frac{S}{\binom{n}{2}}}
+\mjsdeqn{\tau_{b} = \frac{S}{\sqrt{\frac{1}{2}n(n-1) - \frac{1}{2}
+\sum_{t \in g_t} t(t-1)} \times
+\sqrt{\frac{1}{2}n(n-1) - \frac{1}{2}\sum_{u \in g_u} u(u-1)}}}
+}
+\seealso{
+\code{\link{mk_test}}
 }

@@ -5,13 +5,12 @@
 #' @param Y A vector of ranks. For Time Series the values observed at each
 #'   \emph{t}.
 #'
-#' @return
 #' @export
 #'
 #' @details \loadmathjax
 #'   \mjsdeqn{S = \sum_{i = 1}^{n - 1}\sum_{j = i + 1}^{n} \textrm{sgn}(X_{j} - X_{i})}
 #'
-#' @seealso \code{\link{mk_tset}}
+#' @seealso \code{\link{mk_test}}
 mk_score <- function(t = NULL, Y) {
   N <- length(Y)
   t <- check_sequence(t, N)
@@ -22,9 +21,9 @@ mk_score <- function(t = NULL, Y) {
 #' Calculate Variance of Mann-Kendall Test Statistic
 #'
 #' @param n Length of ranking/time series.
-#' @param t Contingency table of ranking \eqn{R_{t}}. If \code{NULL} (the default),
+#' @param t Contingency table of ranking \mjseqn{R_{t}}. If \code{NULL} (the default),
 #'   assumes that no duplications are present.
-#' @param u Contingency table of ranking \eqn{R_{u}}. If \code{NULL} (the default),
+#' @param u Contingency table of ranking \mjseqn{R_{u}}. If \code{NULL} (the default),
 #'   assumes that no duplications are present.
 #'
 #' @return Variance of Kendall's test statistic
@@ -36,7 +35,7 @@ mk_score <- function(t = NULL, Y) {
 #' \sum_{t \in g_t} t(t-1)(t-2) \times \sum_{u \in g_u} u(u-1)(u-2) +
 #' \frac{1}{2n(n-1)} \times \sum_{t \in g_t} t(t-1) \times
 #' \sum_{u \in g_u} u(u-1)}{18}}
-#' @seealso \code{\link{mk_tset}}
+#' @seealso \code{\link{mk_test}}
 mk_variance <- function(n, t = NULL, u = NULL) {
   t <- check_sequence(t, n)
   u <- check_sequence(u, n)
@@ -51,9 +50,9 @@ mk_variance <- function(n, t = NULL, u = NULL) {
 #'
 #' @param score Man Kendall Score, see \code{\link{mk_score}}.
 #' @param n Length of ranking/time series.
-#' @param t Contingency table of ranking \eqn{R_{t}}. If \code{NULL} (the default),
+#' @param t Contingency table of ranking \mjseqn{R_{t}}. If \code{NULL} (the default),
 #'   assumes that no duplications are present.
-#' @param u Contingency table of ranking \eqn{R_{u}}. If \code{NULL} (the default),
+#' @param u Contingency table of ranking \mjseqn{R_{u}}. If \code{NULL} (the default),
 #'   assumes that no duplications are present.
 #'
 #' @return A named vector (Tau a or Tau b, depending on the input).
@@ -61,10 +60,10 @@ mk_variance <- function(n, t = NULL, u = NULL) {
 #'
 #' @details \loadmathjax
 #'   \mjsdeqn{\tau_{a} = \frac{S}{\frac{1}{2}n(n-1)} = \frac{S}{\binom{n}{2}}}
-#'   \mjsdqen{\tau_{b} = \frac{S}{\sqrt{\frac{1}{2}n(n-1) - \frac{1}{2}
-#'     \sum_{t \in g_t} t(t-1)} \times
-#'     \sqrt{\frac{1}{2}n(n-1) - \frac{1}{2}\sum_{u \in g_u} u(u-1)}}}
-#' @seealso \code{\link{mk_tset}}
+#'   \mjsdeqn{\tau_{b} = \frac{S}{\sqrt{\frac{1}{2}n(n-1) - \frac{1}{2}
+#'   \sum_{t \in g_t} t(t-1)} \times
+#'   \sqrt{\frac{1}{2}n(n-1) - \frac{1}{2}\sum_{u \in g_u} u(u-1)}}}
+#' @seealso \code{\link{mk_test}}
 mk_tau <- function(score, n, t = NULL, u = NULL) {
   if (is.null(t) & is.null(u)) {
     result <- score / choose(n, 2)
@@ -102,7 +101,7 @@ mk_test <- function(t = NULL, Y, alpha_val = 0.05, alternative = c("two.sided", 
 
 }
 
-#' Calculate standardized test statistic
+# Calculate standardized test statistic
 mk_statisitc <- function(score, variance) {
   if (score > 0) {
     return((score - 1) / sqrt(variance))

@@ -52,14 +52,14 @@ ts_slope <- function(t = NULL, Y) {
 #'
 #' Calculate Test Statistic of Sen's Slope.
 #'
-#' @param t
-#' @param Y
-#' @param slope
+#' @param t A vector of ranks (numeric, or coercible to numeric).
+#'   For Time Series the observation dates.
+#' @param Y A vector of ranks (numeric, or coercible to numeric).
+#'   For Time Series the observation dates.
+#' @param slope Slope of Rankings.
 #'
 #' @return
 #' @export
-#'
-#' @details This
 #'
 #' @seealso \code{\link{ts_test}}
 ts_score <- function(t = NULL, Y, slope) {
@@ -102,9 +102,10 @@ ts_variance <- function(n, u = rep(1, length.out = n)) {
 #'   functionally equivalent to Kendall's Tau,
 #'   however their calculations differ.
 #'
-#' @param t
-#' @param n
-#' @param score
+#' @param t A vector of ranks (numeric, or coercible to numeric).
+#'   For Time Series the observation dates.
+#' @param n Length of ranking.
+#' @param score Sen's Test statistic.
 #'
 #' @return
 #' @export

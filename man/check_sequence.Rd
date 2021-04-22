@@ -7,12 +7,12 @@
 check_sequence(t = NULL, n)
 }
 \arguments{
-\item{t}{}
+\item{t}{A numeric vector of length n.}
 
-\item{n}{}
+\item{n}{A atomic numeric.}
 }
 \value{
-
+A numeric vector.
 }
 \description{
 Title

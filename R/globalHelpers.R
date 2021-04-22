@@ -9,6 +9,12 @@
 #'
 #' @return An Integer.
 #' @export
+#' 
+#' @details \loadmathjax
+#'   \mjsdeqn{\textrm{sgn}(x) =  
+#'   \begin{cases} 1, &\textrm{if}\; x > 0 \\ 0, 
+#'   &\textrm{if}\; x = 0 \\ -1, 
+#'   &\textrm{if}\; x < 0 \end{cases}}
 #'
 #' @references
 #' Kendall, M. G. (1975): Rank Correlation Methods. 4th Edition London,
@@ -57,7 +63,7 @@ onesided_sgn <- function(t) {
 }
 
 
-#' Title
+#' Sequence Checking
 #'
 #' @param t A numeric vector of length n.
 #' @param n A atomic numeric.

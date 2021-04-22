@@ -7,10 +7,10 @@
 onesided_sgn(t)
 }
 \arguments{
-\item{t}{A vector of ranks}
+\item{t}{A vector of ranks.}
 }
 \value{
-An Integer
+An Integer.
 }
 \description{
 This fuction takes a vector of ranks as
@@ -22,6 +22,9 @@ the signs of \eqn{\binom {n} {2}} permutations.
 a single vector as input. In the context of the Kendall's Rank Correlation
 Coefficient this assumes, that the provided vector represents entries in
 their natural order.
+}
+\references{
+Kendall, M. G. (1975): Rank Correlation Methods. 4th Edition London, High Wycombe: Charles Griffin & Company Ltd.
 }
 \seealso{
 \code{\link{sgn}}

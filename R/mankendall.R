@@ -16,10 +16,7 @@ mk_score <- function(t = NULL, Y) {
   N <- length(Y)
   t <- check_sequence(t, N)
 
-  # comb_t <- utils::combn(t, 2)
-  # comb_Y <- utils::combn(Y, 2)
-
-  sgn(comb_t, comb_Y)
+  sgn(t, Y)
 }
 
 #' Calculate Variance of Mann-Kendall Test Statistic

@@ -9,11 +9,11 @@
 #'
 #' @return An Integer.
 #' @export
-#' 
+#'
 #' @details \loadmathjax
-#'   \mjsdeqn{\textrm{sgn}(x) =  
-#'   \begin{cases} 1, &\textrm{if}\; x > 0 \\ 0, 
-#'   &\textrm{if}\; x = 0 \\ -1, 
+#'   \mjsdeqn{\textrm{sgn}(x) =
+#'   \begin{cases} 1, &\textrm{if}\; x > 0 \\ 0,
+#'   &\textrm{if}\; x = 0 \\ -1,
 #'   &\textrm{if}\; x < 0 \end{cases}}
 #'
 #' @references

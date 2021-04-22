@@ -28,8 +28,8 @@ ts_slope <- function(t = NULL, Y) {
   N <- length(Y)
   t <- check_sequence(t, N)
 
-  # comb_t <- utils::combn(t, 2)
-  # comb_Y <- utils::combn(Y, 2)
+  comb_t <- utils::combn(t, 2)
+  comb_Y <- utils::combn(Y, 2)
 
   stats::median(
     # aufgrund der von Sen genannten Bediungungen zu t_j und t_i kann ich nicht einfach so die Summe bilden, auch wenn
@@ -70,10 +70,7 @@ ts_score <- function(t = NULL, Y, slope) {
 
   z <- Y - coeff_T
 
-  # comb_t <- utils::combn(t, 2)
-  # comb_z <- utils::combn(z, 2)
-
-  result <- sgn(comb_t, comb_z)
+  result <- sgn(t, z)
 
   list("coeff" = coeff_T, "score" = result)
 }
@@ -116,9 +113,7 @@ ts_variance <- function(n, u = rep(1, length.out = n)) {
 ts_tau <- function(t = NULL, n, score) {
   t <- check_sequence(t, n)
 
-  # comb_t <- utils::combn(t, 2)
-
-  N <- onesided_sgn(comb_t)
+  N <- onesided_sgn(t)
 
   (1 / sqrt(N * choose(n, 2))) * score
 }

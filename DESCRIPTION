@@ -19,6 +19,7 @@ BugReports: https://github.com/Florian-Katerndahl/simpleRank/issues
 Imports:
     mathjaxr,
     purrr,
+    rlang,
     stats,
     utils
 RdMacros: mathjaxr

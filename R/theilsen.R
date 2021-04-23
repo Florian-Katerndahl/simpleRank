@@ -34,7 +34,7 @@ ts_slope <- function(t = NULL, Y) {
     # aufgrund der von Sen genannten Bediungungen zu t_j und t_i kann ich nicht einfach so die Summe bilden, auch wenn
     # das vielleicht schneller wäre.
     purrr::pmap_dbl(
-      list(comb_Y[, 2], comb_Y[, 1], comb_t[, 2], comb_t[, 1]),
+      list(comb_Y[2, ], comb_Y[1, ], comb_t[2, ], comb_t[1, ]),
       function(Yj, Yi, tj, ti) {
         if (tj <= ti | tj - ti == 0) {
           return(NA)
@@ -125,14 +125,64 @@ ts_tau <- function(t = NULL, n, score) {
 #'   For Time Series the observation dates.
 #' @param Y A vector of ranks. For Time Series the values observed at each
 #'   \emph{t}.
-#' @param alpha_val Level of significance used for testing.
 #'
 #' @return Built in tests like the \code{t.test} use a class "htest".
 #'   Hopefully this will be my return value/class as well.
 #'
 #' @export
+#'
+#' @references
+#' Sen, Pranab Kumar (1968): Estimates of the Regression Coefficient
+#' Based on Kendall's Tau. In: Journal of the American Statistical
+#' Association 63 (324), S. 1379–1389. DOI: 10.2307/2285891.
+#'
+#' Theil, H. (1950): A rank-invariant method of linear and polynomial
+#' regression analysis, 1-2. Confidence regions for the parameters of
+#' linear regression equations in two, three and more variables.
+#' In: Indagationes Mathematicae XII (SP 5/49/R), 386-392, 521-525.
+#'
 #' @seealso \code{\link{ts_slope}} \code{\link{ts_variance}}
 #'   \code{\link{ts_tau}} \code{\link{ts_score}}
-ts_test <- function(t = NULL, Y, alpha_val = 0.05) {
+ts_test <- function(t = NULL, Y) {
+  name_t <- rlang::enexpr(t) # capture while it is still a promise
+  name_Y <- rlang::enexpr(Y)
 
+  N <- length(Y)
+
+  t <- check_sequence(t, N)
+
+  con_table_t <- table(t)
+
+  slope_res <- ts_slope(t, Y)
+
+  score_res <- ts_score(t, Y, slope_res)[["score"]]
+
+  variance_res <- ts_variance(N, con_table_t)
+
+  Z <- mk_statisitc(score_res, variance_res)
+
+  tau <- ts_tau(t, N, score_res)
+
+  return_list <- list(
+    null.value = c("S" = 0),
+    alternative = "two.sided",
+    method = "Kendall's Test for Rank Correlation",
+    estimates = c(
+      "slope" = slope_res,
+      "N" = onesided_sgn(t),
+      "variance" = variance_res,
+      "U [~Tau]" = tau
+    ),
+    data.name = paste0(
+      "t = ", rlang::expr_deparse(name_t),
+      ", Y = ", rlang::expr_deparse(name_Y)
+    ),
+    statistic = c("Z" = Z),
+    parameters = c("n" = N), # honestly: Idk, in the trend package, n is given
+    p.value = 1 - (pnorm(Z, lower.tail = TRUE) - pnorm(Z, lower.tail = FALSE))
+  )
+
+  class(return_list) <- "htest"
+
+  return_list
 }

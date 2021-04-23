@@ -26,7 +26,7 @@ sgn <- function(t, z) {
   comb_z <- utils::combn(z, 2)
   sum(
     purrr::pmap_dbl(
-      list(comb_t[, 2], comb_t[, 1], comb_z[, 2], comb_z[, 1]),
+      list(comb_t[2, ], comb_t[1, ], comb_z[2, ], comb_z[1, ]),
       ~ sign(..1 - ..2) * sign(..3 - ..4)
     )
   )
@@ -58,7 +58,7 @@ onesided_sgn <- function(t) {
   comb_t <- utils::combn(t, 2)
 
   sum(
-    purrr::map2_dbl(comb_t[, 2], comb_t[, 1]), function(t2, t1) sign(t2 - t1)
+    purrr::map2_dbl(comb_t[2, ], comb_t[1, ], function(t2, t1) sign(t2 - t1))
   )
 }
 
@@ -72,7 +72,7 @@ onesided_sgn <- function(t) {
 check_sequence <- function(t = NULL, n) {
   if (!is.null(t)) {
     if (length(t) != n) {
-      stop("While t was supplied: objects t and Y are not of same length.")
+      stop("While t was supplied: objects t and Y are not of same length.", call. = FALSE)
     }
     return(as.numeric(t))
   }

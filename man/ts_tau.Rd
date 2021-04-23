@@ -14,9 +14,6 @@ For Time Series the observation dates.}
 
 \item{score}{Sen's Test statistic.}
 }
-\value{
-
-}
 \description{
 Sen denotes this as \emph{U}. It's
 functionally equivalent to Kendall's Tau,

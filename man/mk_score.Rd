@@ -13,9 +13,6 @@ For Time Series the observation dates.}
 \item{Y}{A vector of ranks. For Time Series the values observed at each
 \emph{t}.}
 }
-\value{
-
-}
 \description{
 Calculate Mann-Kendall Score
 }

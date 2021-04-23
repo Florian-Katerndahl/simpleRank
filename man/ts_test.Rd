@@ -4,7 +4,7 @@
 \alias{ts_test}
 \title{Test Sen-Slope}
 \usage{
-ts_test(t = NULL, Y, alpha_val = 0.05)
+ts_test(t = NULL, Y)
 }
 \arguments{
 \item{t}{A vector of ranks (numeric, or coercible to numeric).
@@ -12,8 +12,6 @@ For Time Series the observation dates.}
 
 \item{Y}{A vector of ranks. For Time Series the values observed at each
 \emph{t}.}
-
-\item{alpha_val}{Level of significance used for testing.}
 }
 \value{
 Built in tests like the \code{t.test} use a class "htest".
@@ -23,6 +21,16 @@ Hopefully this will be my return value/class as well.
 Tests if Sen's slope is significant. It's effectively
 a wrapper around all functions in this package starting
 with \code{ts_}.
+}
+\references{
+Sen, Pranab Kumar (1968): Estimates of the Regression Coefficient
+Based on Kendall's Tau. In: Journal of the American Statistical
+Association 63 (324), S. 1379–1389. DOI: 10.2307/2285891.
+
+Theil, H. (1950): A rank-invariant method of linear and polynomial
+regression analysis, 1-2. Confidence regions for the parameters of
+linear regression equations in two, three and more variables.
+In: Indagationes Mathematicae XII (SP 5/49/R), 386-392, 521-525.
 }
 \seealso{
 \code{\link{ts_slope}} \code{\link{ts_variance}}

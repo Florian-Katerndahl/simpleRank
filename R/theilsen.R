@@ -179,7 +179,7 @@ ts_test <- function(t = NULL, Y) {
     ),
     statistic = c("Z" = Z),
     parameters = c("n" = N), # honestly: Idk, in the trend package, n is given
-    p.value = 1 - (pnorm(Z, lower.tail = TRUE) - pnorm(Z, lower.tail = FALSE))
+    p.value = 1 - (stats::pnorm(Z, lower.tail = TRUE) - stats::pnorm(Z, lower.tail = FALSE))
   )
 
   class(return_list) <- "htest"

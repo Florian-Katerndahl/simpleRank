@@ -4,12 +4,7 @@
 \alias{mk_test}
 \title{Mann-Kendall Test}
 \usage{
-mk_test(
-  t = NULL,
-  Y,
-  alpha_val = 0.05,
-  alternative = c("two.sided", "less", "greater")
-)
+mk_test(t = NULL, Y, alternative = c("two.sided", "less", "greater"))
 }
 \arguments{
 \item{t}{A vector of ranks (numeric, or coercible to numeric).
@@ -17,8 +12,6 @@ For Time Series the observation dates.}
 
 \item{Y}{A vector of ranks. For Time Series the values observed at each
 \emph{t}.}
-
-\item{alpha_val}{Level of significance used for testing.}
 
 \item{alternative}{What should \mjseqn{H_{1}} be?}
 }

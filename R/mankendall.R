@@ -138,9 +138,9 @@ mk_test <- function(t = NULL, Y, alternative = c("two.sided", "less", "greater")
     statistic = c("Z" = Z),
     parameters = c("n" = N), # honestly: Idk, in the trend package, n is given
     p.value = switch(alternative,
-      less = pnorm(Z, lower.tail = TRUE),
-      greater = pnorm(Z, lower.tail = FALSE),
-      two.sided = 1 - (pnorm(Z, lower.tail = TRUE) - pnorm(Z, lower.tail = FALSE))
+      less = stats::pnorm(Z, lower.tail = TRUE),
+      greater = stats::pnorm(Z, lower.tail = FALSE),
+      two.sided = 1 - (stats::pnorm(Z, lower.tail = TRUE) - stats::pnorm(Z, lower.tail = FALSE))
     )
   )
 

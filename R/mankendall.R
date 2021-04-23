@@ -72,8 +72,8 @@ mk_tau <- function(score, n, t = NULL, u = NULL) {
 
     return(result)
   } else {
-    t <- check_sequence(t)
-    u <- check_sequence(u)
+    t <- check_sequence(t, n)
+    u <- check_sequence(u, n)
   }
 
   result <- score / (sqrt(choose(n, 2) - (0.5 * sum(t * (t - 1)))) * sqrt(choose(n, 2) - (0.5 * sum(u * (u - 1)))))
@@ -89,16 +89,64 @@ mk_tau <- function(score, n, t = NULL, u = NULL) {
 #'   For Time Series the observation dates.
 #' @param Y A vector of ranks. For Time Series the values observed at each
 #'   \emph{t}.
-#' @param alpha_val Level of significance used for testing.
 #' @param alternative What should \mjseqn{H_{1}} be?
 #'
 #' @return Built in tests like the \code{t.test} use a class "htest".
 #'   Hopefully this will be my return value/class as well.
 #' @export
+#'
 #' @seealso \code{\link{mk_score}} \code{\link{mk_variance}}
 #'   \code{\link{mk_tau}}
-mk_test <- function(t = NULL, Y, alpha_val = 0.05, alternative = c("two.sided", "less", "greater")) {
+mk_test <- function(t = NULL, Y, alternative = c("two.sided", "less", "greater")) {
+  name_t <- rlang::enexpr(t) # capture while it is still a promise
+  name_Y <- rlang::enexpr(Y)
 
+  N <- length(Y)
+
+  t <- check_sequence(t, N)
+
+  con_table_t <- table(t)
+  con_table_Y <- table(Y)
+
+  score_res <- mk_score(t, Y)
+
+  variance_res <- mk_variance(N, con_table_t, con_table_Y)
+
+  Z <- mk_statisitc(score_res, variance_res)
+
+  tau <- mk_tau(score_res, N, con_table_t, con_table_Y)
+
+  alternative <- match.arg(alternative)
+
+  return_list <- list(
+    null.value = switch(alternative, # wut, why everywhere S = 0?
+      less = c("S" = 0),
+      greater = c("S" = 0),
+      two.sided = c("S" = 0)
+    ),
+    alternative = alternative,
+    method = "Kendall's Test for Rank Correlation",
+    estimates = c(
+      "S" = score_res,
+      "variance" = variance_res,
+      tau
+    ),
+    data.name = paste0(
+      "t = ", rlang::expr_deparse(name_t),
+      ", Y = ", rlang::expr_deparse(name_Y)
+    ),
+    statistic = c("Z" = Z),
+    parameters = c("n" = N), # honestly: Idk, in the trend package, n is given
+    p.value = switch(alternative,
+      less = pnorm(Z, lower.tail = TRUE),
+      greater = pnorm(Z, lower.tail = FALSE),
+      two.sided = 1 - (pnorm(Z, lower.tail = TRUE) - pnorm(Z, lower.tail = FALSE))
+    )
+  )
+
+  class(return_list) <- "htest"
+
+  return_list
 }
 
 # Calculate standardized test statistic
